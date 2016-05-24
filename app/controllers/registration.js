@@ -10,10 +10,14 @@ router.get('/categories',function(req,res){
     res.send(categories.categoryInfo());
 });
 
-//return categoried by Id
+//return categories by Id
 router.get('/categories/:id',function(req,res){
    var Id = req.params.id;
-    res.send(categories.categoryByid(Id));
+    if(categories.categoryById(Id) === null){
+        res.send('null');
+    }else {
+        res.send(categories.categoryById(Id));
+    }
 });
 
 module.exports = router;

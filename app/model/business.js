@@ -1,7 +1,7 @@
 var util = require('util'),
     EventEmitter = require('events').EventEmitter,
-    db = require('../database/businessSchema');
-    // valid = require('../helper/validation');
+    db = require('../database/businessSchema'),
+     valid = require('../helper/validation');
 
 function Details(){
     EventEmitter.call(this);
@@ -9,8 +9,8 @@ function Details(){
 util.inherits(Details,EventEmitter);
 
 Details.prototype.signUp = function(data,cb){
-  var self = this;
-    // if(valid.isEmail(data.email)&& valid.isUrl(data.url)){
+    var self = this;
+    if(valid.isEmail(data.email)&& valid.isUrl(data.businessUrl)){
         var info = new db.content({
             id : data.id,
             title : data.title,
@@ -26,10 +26,10 @@ Details.prototype.signUp = function(data,cb){
                 self.emit('data saved');
             }
         });
-     //}
-    // else{
-    //     cb('enter valid data',null);
-    // }
+    }
+    else{
+          cb('enter valid data',null);
+    }
 };
 
 Details.prototype.getAll = function(cb){

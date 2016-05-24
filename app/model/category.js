@@ -33,32 +33,37 @@ var categoryList = [
         }
     }];
 
-function category(){
+function Category(){
     EventEmitter.call(this);
 }
-util.inherits(category, EventEmitter);
+util.inherits(Category, EventEmitter);
 
 //GET categories in JSON format
-category.prototype.categoryInfo = function(){
+Category.prototype.categoryInfo = function(){
     return categoryList;
 };
 
 //GET categories by Id
-category.prototype.categoryByid = function(data){
+//@param: array
+//return: category list by id
+//TODO:: conditions for null
+Category.prototype.categoryById = function(data){
+    var self = this;
     console.log(data);
-    var para = data.split(',');
+    var param = data.split(',');
     var result = [];
-    for(var i=0; i < para.length; i++){
-        for(var j=0; j<categoryList.length; j++){
-            if(para[i] == categoryList[j].id){
+    for (var i = 0; i < param.length; i++) {
+        for (var j = 0; j < categoryList.length; j++) {
+            if (param[i] == categoryList[j].id) {
                 result.push(categoryList[j]);
             }
         }
     }
+    self.emit('data retrieved successfully');
     return result;
 };
 
-module.exports = category;
+module.exports =Category;
 
 
 

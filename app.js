@@ -18,7 +18,7 @@ app.use(require('./app/controllers'));
 db.connect(function(){
     //callback when connect success
     http.createServer(app).listen(port);
-    console.log("Server running at 4000..");
+    console.log("Server running at "+port+"..");
 });
 
 db.get().connection.on('connected',function(){
