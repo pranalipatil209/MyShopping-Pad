@@ -1,3 +1,4 @@
+//dependancies
 var express = require('express')
     ,app = express()
     ,router = express.Router()
@@ -6,16 +7,18 @@ var express = require('express')
     ,categories = new categoryInfo();
 
 //return all categories
-router.get('/categories',function(req,res){
+router.get('/categories/list',function(req,res){
     res.send(categories.categoryInfo());
 });
 
 //return categories by Id
 router.get('/categories/:id',function(req,res){
    var Id = req.params.id;
-    if(categories.categoryById(Id) === null){
-        res.send('null');
-    }else {
+    if(!Id){
+        res.send('id is missing');
+        console.log('Id is null');
+    }
+    else{
         res.send(categories.categoryById(Id));
     }
 });

@@ -7,8 +7,17 @@ module.exports = {
             return false;
         }
     },
+
     isUrl : function(url){
         if(url.match(/(http:\/\/|https:\/\/)?(www.)?([a-zA-Z0-9]+).[a-zA-Z0-9]*.[a-z]{3}.?([a-z]+)?/)){
+            return true;
+        }else{
+            return false;
+        }
+    },
+
+    isMobile : function(mobile){
+        if(mobile.match(/^(\+){1}91(\-){1}\d[0-9]{9}$/)){
             return true;
         }else{
             return false;

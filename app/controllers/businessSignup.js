@@ -21,7 +21,7 @@ router.post('/signUp',function(req,res){
         businessUrl : req.body.businessUrl,
         email : req.body.email,
         location : req.body.location
-    }
+    };
     business.signUp(addData,function(err,data){
         if(err){
             res.send(err);
@@ -30,7 +30,6 @@ router.post('/signUp',function(req,res){
         }
     })
 });
-
 module.exports = router;
 
 

@@ -47,7 +47,7 @@ Category.prototype.categoryInfo = function(){
 //@param: array
 //return: category list by id
 //TODO:: conditions for null
-Category.prototype.categoryById = function(data){
+Category.prototype.categoryById = function(data) {
     var self = this;
     console.log(data);
     var param = data.split(',');

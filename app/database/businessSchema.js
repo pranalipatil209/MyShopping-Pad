@@ -25,3 +25,25 @@ var details = mongoose.Schema({
 var content = mongoose.model('content',details,'content');
 exports.content = content;
 
+var User = mongoose.Schema({
+    mobile:{
+        type: Number,
+        required : true
+    },
+    pin:{
+        type: Number,
+        required : true
+    },
+    otp:{
+        type: Number
+    },
+    syncTime:{
+        type: Date,
+        Default: Date.now,
+        require: true
+    }
+});
+
+var user = mongoose.model('user',User,'user');
+exports.user = user;
+

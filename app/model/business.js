@@ -1,7 +1,7 @@
 var util = require('util'),
     EventEmitter = require('events').EventEmitter,
     db = require('../database/businessSchema'),
-     valid = require('../helper/validation');
+    valid = require('../helper/validation');
 
 function Details(){
     EventEmitter.call(this);
