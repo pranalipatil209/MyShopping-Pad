@@ -16,9 +16,9 @@ SignIn.prototype.register = function(data,cb){
             if(exist){
                 cb('Number already exist',null);
             }else{
-                //setTimeout(function(send){
-                //    var otp = (Math.floor(Math.random() * 90000)+100000);
-                //    cb(null,{otp:otp});
+                setTimeout(function(send){
+                    var otp = (Math.floor(Math.random() * 90000)+100000);
+                    cb(null,{otp:otp});
                     var info = db.user({
                         mobile: data.mobile,
                         pin: data.pin,
@@ -32,7 +32,7 @@ SignIn.prototype.register = function(data,cb){
                             self.emit('data saved');
                         }
                     });
-                //}, 100)
+                }, 100)
             }
         })
     }else{
@@ -50,6 +50,7 @@ SignIn.prototype.verify = function(data,cb){
                         cb(error,null);
                     }else{
                         cb(null,'Registered successfully!');
+                        self.emit('registration completed');
                     }
                 })
             }else{
@@ -61,4 +62,4 @@ SignIn.prototype.verify = function(data,cb){
     }
 };
 
-exports.module = SignIn;
+module.exports = SignIn;
