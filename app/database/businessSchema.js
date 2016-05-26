@@ -27,7 +27,7 @@ exports.content = content;
 
 var User = mongoose.Schema({
     mobile:{
-        type: Number,
+        type: String,
         required : true
     },
     pin:{

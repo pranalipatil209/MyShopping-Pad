@@ -21,9 +21,12 @@ router.post('/registration',function(req,res){
     };
     sign.register(addData,function(err,data){
         if(err){
+            console.log(err);
             res.send(err);
         }else{
-            res.send(data);
+            console.log(data);
+            res.writeHead(200, {"Content-Type": "application/json"});
+            res.end(JSON.stringify(data));
         }
     })
 });
@@ -36,8 +39,10 @@ router.post('/verification',function(req,res){
     };
     sign.verify(addData,function(err,data){
         if(err){
+            console.log(err);
             res.send(err);
         }else{
+
             res.send(data);
         }
     })

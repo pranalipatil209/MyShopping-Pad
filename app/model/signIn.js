@@ -16,7 +16,7 @@ SignIn.prototype.register = function(data,cb){
             if(exist){
                 cb('Number already exist',null);
             }else{
-                setTimeout(function(send){
+                process.nextTick(function(send){
                     var otp = (Math.floor(Math.random() * 90000)+100000);
                     cb(null,{otp:otp});
                     var info = db.user({
@@ -32,7 +32,7 @@ SignIn.prototype.register = function(data,cb){
                             self.emit('data saved');
                         }
                     });
-                }, 100)
+                })
             }
         })
     }else{
@@ -49,7 +49,7 @@ SignIn.prototype.verify = function(data,cb){
                     if(error){
                         cb(error,null);
                     }else{
-                        cb(null,'Registered successfully!');
+                        cb(null,'Registration successfull!');
                         self.emit('registration completed');
                     }
                 })
@@ -60,6 +60,16 @@ SignIn.prototype.verify = function(data,cb){
     }else{
         cb('Incorrect Mobile number or OTP');
     }
+};
+
+SignIn.prototype.getAll = function(cb){
+    return db.user.find({},function(err,data){
+        if(err){
+            cb(err,null);
+        }else{
+            cb(null,data);
+        }
+    });
 };
 
 module.exports = SignIn;

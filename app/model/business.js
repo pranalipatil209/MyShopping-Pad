@@ -22,7 +22,6 @@ Details.prototype.signUp = function(data,cb){
             if(err){
                 cb(err,null);
             }else{
-                cb(null,'saved successfully');
                 self.emit('data saved');
             }
         });
